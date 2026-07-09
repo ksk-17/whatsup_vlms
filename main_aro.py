@@ -13,13 +13,7 @@ def config():
     parser.add_argument("--device", default="cuda", type=str)
     parser.add_argument("--batch-size", default=256, type=int)
     parser.add_argument("--num_workers", default=16, type=int)
-    parser.add_argument("--model-name", default="openai-clip:ViT-B/32", type=str, \
-            choices=["openai-clip:ViT-B/32", "openai-clip:ViT-L/14", \
-                "NegCLIP", "laion-clip:roberta-ViT-B/32", \
-                "coca", "xvlm-pretrained-4m", "xvlm-pretrained-16m", \
-                "blip-base-14m", "blip-base-129m", "flava", \
-                "coca-cap", "xvlm-flickr", "xvlm-coco", \
-                "blip-flickr-base", "blip-coco-base"])
+    parser.add_argument("--model-name", default="openai-clip:ViT-B/32", type=str)
     parser.add_argument("--dataset", default="VG_Relation", type=str, \
             choices=["VG_Relation", "VG_Attribution", "COCO_Order", \
             "Flickr30k_Order", "Controlled_Images_A", "Controlled_Images_B", \

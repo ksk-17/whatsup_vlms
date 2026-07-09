@@ -179,6 +179,23 @@ def get_model(model_name, device, root_dir=CACHE_DIR):
         clip_model = CLIPWrapper(model, device) 
         return clip_model, image_preprocess
     
+    elif "siglip2" in model_name:
+        from .hf_dualencoder_models import HFDualEncoderWrapper
+        hf_id = model_name.split(":", 1)[1]   # e.g. "siglip2:google/siglip2-so400m-patch14-384"
+        wrapper = HFDualEncoderWrapper(hf_id, device)
+        return wrapper, wrapper.image_preprocess
+
+    elif "metaclip2" in model_name:
+        from .hf_dualencoder_models import HFDualEncoderWrapper
+        hf_id = model_name.split(":", 1)[1]   # e.g. "metaclip2:facebook/metaclip-2-worldwide-huge-quickgelu"
+        wrapper = HFDualEncoderWrapper(hf_id, device)
+        return wrapper, wrapper.image_preprocess
+
+    elif "blip2-itm" in model_name:
+        from .blip2_itm_models import BLIP2ITMWrapper
+        hf_id = model_name.split(":", 1)[1]   # e.g. "blip2-itm:Salesforce/blip2-itm-vit-g"
+        wrapper = BLIP2ITMWrapper(hf_id, device)
+        return wrapper, wrapper.image_preprocess
         
     else:
         raise ValueError(f"Unknown model {model_name}")
